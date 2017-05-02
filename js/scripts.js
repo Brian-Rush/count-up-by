@@ -1,3 +1,18 @@
+//Business Logic
+
+// Create a variable that's a function that accepts our inputs as parameters/argument and creates a new variable that's an array
+var counter = function(countBy, countTo){
+  var someArr = [];
+
+//for loop with initialization parameter, conditional parameter, and final expression parameter
+  for (var index = countBy; index <= countTo; index += countBy) {
+    someArr.push(index);
+  }
+  return someArr;
+}
+
+//Front-End Logic
+
 $(document).ready(function() {
   $("form").submit(function(event) {
     event.preventDefault();
@@ -6,12 +21,9 @@ $(document).ready(function() {
     var countToInput = parseFloat($("#count-to").val());
 
     //Assign input 2 to variable
-
     var countByInput = parseFloat($("#count-by").val());
 
-
-
-//Business Logic
+    //if else statements to evaluate input and give error messages
     if (isNaN(countToInput)) {
       $("#error-1").text("Please enter a number.");
       $("#hidden-label-1").show();
@@ -32,14 +44,23 @@ $(document).ready(function() {
       $("#error-2").text("Please enter a positive number.");
       $("#hidden-label-2").show();
     } else {
-      $("#hidden-label-1").hide();
+      var results = counter(countByInput, countToInput);
+
+      //
+      results.forEach(function(num){
+        $(".output").append("<li>" + num + "</li>")
+      });
     };
 
 
 
-    for (var index = countByInput; index <= countToInput; index += countByInput) {
-      $(".output").append("<li>" + index + "</li>")
-    }
+
+//Business Logic
+
+
+
+
+
 
   });
   });
