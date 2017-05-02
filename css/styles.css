@@ -1,0 +1,4 @@
+#hidden-label-1, #hidden-label-2 {
+  color: red;
+  display: none;
+}
